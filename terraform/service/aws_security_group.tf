@@ -25,7 +25,7 @@ resource "aws_security_group" "instance" {
 resource "aws_security_group" "alb" {
   name        = "skillmatch-alb"
   description = "http and https"
-  vpc_id      = data.terraform_remote_state.vpc.vpc_id
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
     from_port = 80
