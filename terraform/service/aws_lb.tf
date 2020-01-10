@@ -8,7 +8,7 @@ resource "aws_lb" "lb" {
   ]
 
   subnets = [
-    data.terraform_remote_state.vpc.public_subnet_1_id,
-    data.terraform_remote_state.vpc.public_subnet_2_id
+    data.terraform_remote_state.vpc.outputs.public_subnet_1_id,
+    data.terraform_remote_state.vpc.outputs.public_subnet_2_id
   ]
 }
