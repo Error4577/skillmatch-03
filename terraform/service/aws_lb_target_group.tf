@@ -13,4 +13,5 @@ resource "aws_lb_target_group" "http" {
     healthy_threshold   = 3
     unhealthy_threshold = 3
   }
+  depends_on = [aws_lb.lb]
 }
