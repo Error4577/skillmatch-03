@@ -31,7 +31,7 @@ jobs:
             DISABLE_SPRING=true bundle exec rails test
   build_image:
     docker:
-      - image: docker docker:18.09.0
+      - image: docker:18.09.0
     steps:
       - checkout
       - setup_remote_docker
