@@ -3,6 +3,14 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_USERNAME: root
+          DB_HOST: 127.0.0.1
+      - image: mysql:5.7
+        environment:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
     working_directory: ~/repo
     steps:
       - checkout
@@ -76,6 +84,10 @@ jobs:
             aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | { containerDefinitions: .containerDefinitions }' > definition.json
             aws ecs register-task-definition --family rails-service --cli-input-json file://definition.json
             aws ecs update-service --cluster skillmatch-ecs-cluster --service rails-service --task-definition rails-service
+      - run:
+          name: migration
+          command: |
+            aws ecs run-task --cluster skillmatch-ecs-cluster --task-definition rails-migrate
 workflows:
   version: 2
   test:

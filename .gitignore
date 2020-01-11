@@ -16,8 +16,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-!/tmp/pids
-!/tmp/sockets
+# !/tmp/pids
+# !/tmp/sockets
 
 # Ignore uploaded files in development
 /storage/*
@@ -64,3 +64,5 @@ override.tf.json
 # example: *tfplan*
 
 .DS_Store
+
+.docker-env
