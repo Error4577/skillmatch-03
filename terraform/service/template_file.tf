@@ -7,5 +7,5 @@ data "template_file" "service_container_definition" {
 }
 
 data "template_file" "migrate_container_definition" {
-  template = file("./container_definitions/migrate.json.tpl")
+  template = file("./container_definitions/migration.json.tpl")
 }
