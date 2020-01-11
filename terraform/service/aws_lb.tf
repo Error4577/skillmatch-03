@@ -11,4 +11,5 @@ resource "aws_lb" "lb" {
     data.terraform_remote_state.vpc.outputs.public_subnet_1_id,
     data.terraform_remote_state.vpc.outputs.public_subnet_2_id
   ]
+  depends_on = [aws_security_group.alb]
 }
