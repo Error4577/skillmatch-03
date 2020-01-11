@@ -10,10 +10,11 @@ entity "Companies" as company {
   about[text]
 }
 
-note left
+note bottom
   **Association**
   --
   has_many :matchings
+  has_many :engineers, through: :matchings
   has_many :messages
 end note
 

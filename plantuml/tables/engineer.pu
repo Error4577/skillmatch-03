@@ -21,6 +21,7 @@ note top
   has_many :engineer_skills
   has_many :skills, through: :engineer_skills
   has_many :matchings
+  has_many :companies, through: :matchings
   has_many :messages
 end note
 
