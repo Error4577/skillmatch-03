@@ -1,0 +1,19 @@
+@startuml message
+
+entity "Messages" as message {
+  +id  [PK]
+  --
+  matching_id [FK]
+  engineer_id [FK]
+  company_id [FK]
+  body [text]
+}
+
+note top
+  **Association**
+  --
+  belongs_to :engineer, optional: true
+  belongs_to :company, optional: true
+end note
+
+@enduml

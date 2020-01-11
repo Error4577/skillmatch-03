@@ -1,0 +1,16 @@
+@startuml skill
+
+entity "Skills" as skill {
+  +id  [PK]
+  --
+  name[string]
+}
+
+note top
+  **Association**
+  --
+  has_many :engineer_skills
+  has_many :engineer, through: :engineer_skills
+end note
+
+@enduml
