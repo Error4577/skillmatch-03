@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "my-sample-terraform-ishihara"
-    key    = "skillmatch/sample/terraform.tfstate"
+    key    = "skillmatch/service/terraform.tfstate"
     region = "ap-northeast-1"
   }
 }
