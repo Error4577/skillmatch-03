@@ -1,0 +1,28 @@
+@startuml engineer
+
+entity "Engineers" as engineer {
+  +id  [PK]
+  --
+  e-mail [string]
+  password [string]
+  phone_number [varchar]
+  nickname [string]
+  first_name [string]
+  last_name [string]
+  first_name_kana [string]
+  last_name_kana [string]
+  date_of_birth [date]
+  sex [integer]
+}
+
+note top
+  **Association**
+  --
+  has_many :engineer_skills
+  has_many :skills, through: :engineer_skills
+  has_many :matchings
+  has_many :companies, through: :matchings
+  has_many :messages
+end note
+
+@enduml

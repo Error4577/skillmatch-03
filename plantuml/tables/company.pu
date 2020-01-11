@@ -1,0 +1,21 @@
+@startuml company
+
+entity "Companies" as company {
+  +id  [PK]
+  --
+  e-mail [string]
+  password [string]
+  phone_number [varchar]
+  name[string]
+  about[text]
+}
+
+note bottom
+  **Association**
+  --
+  has_many :matchings
+  has_many :engineers, through: :matchings
+  has_many :messages
+end note
+
+@enduml

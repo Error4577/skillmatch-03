@@ -1,0 +1,17 @@
+@startuml engineer_skill
+
+entity "Engineer_Skills" as engineer_skill {
+  +id [PK]
+  --
+  +engineer_id [FK]
+  +skill_id [FK]
+}
+
+note bottom
+  **Association**
+  --
+  - belongs_to :engineer
+  - belongs_to :skill
+end note
+
+@enduml

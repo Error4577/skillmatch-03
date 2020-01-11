@@ -1,0 +1,19 @@
+@startuml matching
+
+entity "Matchings" as matching {
+  +id [PK]
+  --
+  +engineer_id [FK]
+  +company_id [FK]
+  status [integer]
+}
+
+note bottom
+  **Association**
+  --
+  - belongs_to :engineer
+  - belongs_to :company
+  - has_many :message
+end note
+
+@enduml

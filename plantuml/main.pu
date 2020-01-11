@@ -1,0 +1,20 @@
+@startuml main
+
+skinparam monochrome true
+
+!include tables/company.pu
+!include tables/engineer.pu
+!include tables/skill.pu
+!include tables/engineer_skill.pu
+!include tables/matching.pu
+!include tables/message.pu
+
+engineer ||-r-o{ engineer_skill
+engineer_skill }o-r-|| skill
+company ||-r-o{ matching
+matching }o-r-|| engineer
+matching ||-u-o{ message
+company ||-u-o{ message
+message }o-d-|| engineer
+
+@enduml
