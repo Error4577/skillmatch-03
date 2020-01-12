@@ -1,14 +1,9 @@
-<h1>Top</h1>
-<div>
-  <%= form_for @todo do |form| %>
-    <%= form.text_field :description %>
-    <%= form.submit %>
-  <% end %>
+<div class="loginPage">
+  <div class="container">
+    <div class="loginPage_contents">
+      <h1 class="h4 loginPage_contents_title">新しい職場、新しい仲間</h1>
+      <%= image_tag "logo_transparent.png", class: "loginPage_contents_mainLogo" %>
+      <%= link_to "メールアドレスでログインする", "#", class: "btn loginPage_contents_btn" %>
+    </div>
+  </div>
 </div>
-<p>
-  <ul>
-  <% @todos.each do |todo| %>
-    <li><%= todo.description %></li>
-  <% end %>
-  </ul>
-</p>
