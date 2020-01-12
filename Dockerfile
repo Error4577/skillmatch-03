@@ -10,6 +10,9 @@ ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 WORKDIR $APP_ROOT
 
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+
 ADD Gemfile $APP_ROOT
 ADD Gemfile.lock $APP_ROOT
 
