@@ -1,0 +1,15 @@
+@startuml
+
+sprite $circleci [48x48/16z] {
+bLPLWiKm20nnPUz_shLN2zHclYgu6mdoiRG_bEIjUG25qdd7gF6EXL9dYL7S5NbSg0L6fZDgL_aAFMZoCFW6MTd2zoYpJOaPOGZyZ79mTV0Bf2tidTzW-8K-
+gp-jv5ALb4QdrjJm-KukYp_H_A7CGhpPOUT_dPJuGdTvYS9wcKSPwYQ2KoMrJAKp_XYNqs9lnnmS3VpQCk9ppO7Mbya0Ycb5N2YeVgBXj88Xmh6GBp-TZf7J
+z56wxtX7kFDlyT-EOmOawF3Noth4wL5xK7_HUABvkgY7Sb4FQBsXzGps2zgFQB-3ymITL-0y1ESjEC_HVG7k8t3VuViKtzVuFO3V6-WzymC
+}
+
+!define CIRCLECI(_alias) ENTITY(rectangle,black,circleci,_alias,CIRCLECI)
+!define CIRCLECI(_alias, _label) ENTITY(rectangle,black,circleci,_label, _alias,CIRCLECI)
+!define CIRCLECI(_alias, _label, _shape) ENTITY(_shape,black,circleci,_label, _alias,CIRCLECI)
+!define CIRCLECI(_alias, _label, _shape, _color) ENTITY(_shape,_color,circleci,_label, _alias,CIRCLECI)
+skinparam folderBackgroundColor<<CIRCLECI>> White
+
+@enduml

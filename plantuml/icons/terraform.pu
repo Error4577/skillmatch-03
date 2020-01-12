@@ -1,0 +1,21 @@
+@startuml
+
+sprite $terraform [48x48/16z] {
+xTH7SWKW30DGYMOBt_-ywOq0C_5a-xL-T6m0bKZ5lENyb9MCbwJ1d9Utd9Uyvhna9UUbdlHENXrvykEsgQvwzFDujrKHPo_9ErTTBEBczxlbc77tszqsHIn-
+dhpK2G3L8rPVxEpb3RGPlprG_UWbzeY31tlE0nmv3rJBUQ1vpeCzvm5Yp8m7Yb_yDE8KzgDNnJ6zasFpzy8RqokABNuEukhV_sRpR-zb4RkN1ja_lDfcTYzl
+v13xxCHVlEGL1QLiOFEvzhN-X__wXsz9Zsev3pJFUR3dF516pWFLSXvedlDWttmwpm
+}
+
+' !define TERRAFORM(_alias) ENTITY(rectangle,black,terraform,_alias,TERRAFORM)
+' !define TERRAFORM(_alias, _label) ENTITY(rectangle,black,terraform,_label, _alias,TERRAFORM)
+' !define TERRAFORM(_alias, _label, _shape) ENTITY(_shape,black,terraform,_label, _alias,TERRAFORM)
+' !define TERRAFORM(_alias, _label, _shape, _color) ENTITY(_shape,_color,terraform,_label, _alias,TERRAFORM)
+' skinparam folderBackgroundColor<<TERRAFORM>> white
+
+!define TERRAFORM(alias) PUML_ENTITY(rectangle,#5c4ce4,terraform,alias,terraform)
+
+!definelong TERRAFORM(alias,label,e_type="rectangle",e_color="#5c4ce4",e_stereo="terraform",e_sprite="terraform")
+PUML_ENTITY(e_type,e_color,e_sprite,label,alias,e_stereo)
+!enddefinelong
+
+@enduml

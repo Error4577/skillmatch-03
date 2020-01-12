@@ -1,0 +1,70 @@
+@startuml
+!define AWSPUML https://raw.githubusercontent.com/milo-minderbinder/AWS-PlantUML/release/18-2-22/dist
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.0.0
+
+!includeurl AWSPUML/common.puml
+!includeurl ICONURL/common.puml
+
+!includeurl AWSPUML/General/AWScloud/AWScloud.puml
+!includeurl AWSPUML/Compute/AmazonEC2/AmazonEC2.puml
+!includeurl AWSPUML/Compute/AmazonVPC/AmazonVPC.puml
+!includeurl AWSPUML/Compute/AmazonECS/AmazonECS.puml
+!includeurl AWSPUML/Compute/AmazonECR/AmazonECR.puml
+!includeurl AWSPUML/Compute/ElasticLoadBalancing/ApplicationLoadBalancer/ApplicationLoadBalancer.puml
+!includeurl AWSPUML/Database/AmazonRDS/AmazonRDS.puml
+!includeurl AWSPUML/NetworkingContentDelivery/AmazonRoute53/AmazonRoute53.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/ACM/certificatemanager/certificatemanager.puml
+!includeurl AWSPUML/Storage/AmazonS3/AmazonS3.puml
+
+!includeurl ICONURL/font-awesome-5/user.puml
+!includeurl ICONURL/font-awesome-5/users.puml
+!includeurl ICONURL/font-awesome-5/docker.puml
+!includeurl ICONURL/font-awesome-5/github.puml
+
+!include ./icons/circleci.pu
+!include ./icons/terraform.pu
+
+left to right direction
+
+FA5_USER(developer,Developer) #White
+FA5_USERS(users,Users) #White
+FA5_GITHUB(github,GitHub) #white
+CIRCLECI(circleci,CircleCI) #white
+TERRAFORM(terraform,Terraform) #white
+
+AWSCLOUD(aws,AWS) #white {
+    AMAZONVPC(vpc,VPC) #white {
+        AMAZONEC2(ec2,EC2) #white {
+            FA5_DOCKER(docker,Docker) #White
+        }
+
+        AMAZONECS(ecs,ECS) #white
+        APPLICATIONLOADBALANCER(alb,ALB) #white
+        AMAZONRDS(rds,RDS) #white
+    }
+    CERTIFICATEMANAGER(acm,ACM) #white
+    AMAZONROUTE53(route53,Route53) #white
+    AMAZONECR(ecr,ECR) #white
+    AMAZONS3(s3,S3) #white
+}
+
+developer -r-> github : push
+github -r-> circleci : webhook
+circleci -u-> ecr : ビルドしたイメージをpush
+circleci -d-> ecs : TaskDefinitionsとServiceの更新
+
+ecs -d-> docker
+ecr -d-> docker
+docker -d-> rds
+docker -r-> s3
+ecr -[hidden]d- s3
+alb -u-> docker
+
+users -u-> route53 : アクセス
+route53 -u-> alb
+acm -l-> route53
+
+developer -l-> terraform
+terraform -d-> aws
+
+@enduml
