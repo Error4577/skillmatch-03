@@ -22,6 +22,7 @@ RUN \
 
 ADD . $APP_ROOT
 
+ENV RAILS_SERVE_STATIC_FILES=1
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 
 # EXPOSE 3000
