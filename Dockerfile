@@ -10,22 +10,30 @@ ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 WORKDIR $APP_ROOT
 
-# RUN \
-#   curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
-#   apt-get update && apt-get install nodejs
-
-# RUN  \
-#   apt-get update && apt-get install -y curl apt-transport-https wget && \
-#   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-#   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-#   apt-get update && apt-get install -y yarn
+RUN apt-get update -qq && apt-get install -y \
+  build-essential libpq-dev apt-transport-https
 
 RUN \
-  apt-get update && apt-get install -y \
-  nodejs \
-  yarn \
-  --no-install-recommends && \
-  rm -rf /var/lib/apt/lists/*
+  curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+  apt-get install -y nodejs
+
+RUN  \
+  apt-get update && apt-get install -y curl apt-transport-https wget && \
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  apt-get install -y yarn
+
+# RUN \
+#   apt-get update && apt-get install -y \
+#   nodejs \
+#   yarn \
+#   --no-install-recommends && \
+#   rm -rf /var/lib/apt/lists/*
+
+# RUN apt-get update
+# RUN apt-get install -y nodejs --no-install-recommends
+# RUN apt-get install -y yarn --no-install-recommends
+# RUN rm -rf /var/lib/apt/lists/*
 
 ADD Gemfile $APP_ROOT
 ADD Gemfile.lock $APP_ROOT
