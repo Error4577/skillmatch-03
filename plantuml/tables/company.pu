@@ -5,7 +5,7 @@ entity "Companies" as company {
   --
   e-mail [string]
   password [string]
-  phone_number [varchar]
+  phone_number [string]
   name[string]
   about[text]
 }
