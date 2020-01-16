@@ -6,6 +6,12 @@ require 'rails_helper'
 
 describe Company do
   describe '#create' do
+    # name, email, phone_number, password, password_confirmation, aboutが存在すれば登録できる
+    it "name, email, phone_number, password, password_confirmation, aboutが存在すれば登録できる" do
+      company = build(:company)
+      expect(company).to be_valid
+    end
+
     # nameが空白だと登録できないことを確認
     it "is invalid without a name" do
       company = build(:company, name: "")
