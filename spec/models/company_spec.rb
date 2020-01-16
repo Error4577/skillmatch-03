@@ -44,7 +44,7 @@ describe Company do
 
     # emailがフォーマットに適していない場合登録できないことを確認
     it "it is invalid with a unsuitable format" do
-      company = build(:company, email: Faker::Alphanumeric.alphanumeric(number:20))
+      company = build(:company, email: Faker::Alphanumeric.alphanumeric(number: 20))
       company.valid?
       expect(company.errors[:email]).to include("is invalid")
     end
@@ -55,7 +55,7 @@ describe Company do
       company.valid?
       expect(company.errors[:phone_number]).to include("can't be blank")
     end
-    
+
     # phone_numberが10文字未満だと保存できないことを確認
     it "phone_numberが10文字未満だと保存できないことを確認" do
       company = build(:company, phone_number: Faker::Number.number(digits: 9))
@@ -86,7 +86,7 @@ describe Company do
 
     # phone_numberがフォーマットに適さない場合保存できないことを確認
     it "phone_numberがフォーマットに適さない場合保存できないことを確認" do
-      company = build(:company, phone_number: Faker::Alphanumeric.alphanumeric(number:10))
+      company = build(:company, phone_number: Faker::Alphanumeric.alphanumeric(number: 10))
       company.valid?
       expect(company.errors[:phone_number]).to include("is invalid")
     end
@@ -128,11 +128,11 @@ describe Company do
 
     # passwordがフォーマットに適さない場合保存できないことを確認
     it "passwordがフォーマットに適さない場合保存できないことを確認" do
-      company = build(:company, password: Faker::Alphanumeric.alpha(number:10))
+      company = build(:company, password: Faker::Alphanumeric.alpha(number: 10))
       company.valid?
       expect(company.errors[:password]).to include("is invalid")
     end
-    
+
     # passwordが存在していてもpassword_confirmationが空白だと登録できないことを確認
     it "is invalid without a password_confirmation although with a password" do
       company = build(:company, password_confirmation: "")
