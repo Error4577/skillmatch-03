@@ -20,14 +20,14 @@ describe Company do
     end
 
     # nameが50文字以上であれば登録できないこと
-    it "is invalid without a name" do
+    it "nameが50文字以上であれば登録できないこと" do
       company = build(:company, name: Faker::Internet.username(specifier: 50..51))
       company.valid?
       expect(company.errors[:name]).to include("is too long (maximum is 50 characters)")
     end
 
     # nameが50文字以下であれば登録できること
-    it "is invalid without a name" do
+    it "nameが50文字以下であれば登録できること" do
       company = build(:company, name: Faker::Internet.username(specifier: 49..50))
       company.valid?
       expect(company).to be_valid
