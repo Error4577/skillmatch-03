@@ -6,143 +6,31 @@ require 'rails_helper'
 
 describe Engineer do
   describe '#create' do
-    # nickname, first_name, last_name, first_name_kana, last_name_kana, sex, birthday, email, phone_number, password, password_confirmation, self_introductionが存在すれば登録できる
-    it "nickname, first_name, last_name, first_name_kana, last_name_kana, sex, birthday, email, phone_number, password, password_confirmation, self_introductionが存在すれば登録できる" do
+    # name, sex, birthday, email, phone_number, password, password_confirmation, self_introductionが存在すれば登録できる
+    it "name, first_name, last_name, first_name_kana, last_name_kana, sex, birthday, email, phone_number, password, password_confirmation, self_introductionが存在すれば登録できる" do
       engineer = build(:engineer)
       expect(engineer).to be_valid
     end
 
-    # nicknameが空白だと登録できないことを確認
-    it "is invalid without a nickname" do
-      engineer = build(:engineer, nickname: "")
+    # nameが空白だと登録できないことを確認
+    it "is invalid without a name" do
+      engineer = build(:engineer, name: "")
       engineer.valid?
-      expect(engineer.errors[:nickname]).to include("can't be blank")
+      expect(engineer.errors[:name]).to include("can't be blank")
     end
 
-    # nicknameが20文字以上であれば登録できないこと
-    it "nicknameが20文字以上であれば登録できないこと" do
-      engineer = build(:engineer, nickname: Faker::Internet.username(specifier: 20..21))
+    # nameが20文字以上であれば登録できないこと
+    it "nameが20文字以上であれば登録できないこと" do
+      engineer = build(:engineer, name: Faker::Internet.username(specifier: 20..21))
       engineer.valid?
-      expect(engineer.errors[:nickname]).to include("is too long (maximum is 20 characters)")
+      expect(engineer.errors[:name]).to include("is too long (maximum is 20 characters)")
     end
 
-    # nicknameが20文字以下であれば登録できること
-    it "nicknameが20文字以下であれば登録できること" do
-      engineer = build(:engineer, nickname: Faker::Internet.username(specifier: 19..20))
+    # nameが20文字以下であれば登録できること
+    it "nameが20文字以下であれば登録できること" do
+      engineer = build(:engineer, name: Faker::Internet.username(specifier: 19..20))
       engineer.valid?
       expect(engineer).to be_valid
-    end
-
-    # first_nameが空白だと登録できないことを確認
-    it "is invalid without a first_name" do
-      engineer = build(:engineer, first_name: "")
-      engineer.valid?
-      expect(engineer.errors[:first_name]).to include("can't be blank")
-    end
-
-    # first_nameが21文字以上であれば登録できないこと
-    it "first_nameが20文字以上であれば登録できないこと" do
-      engineer = build(:engineer, first_name: "ほげほげほげほげほげほげほげほげほげほげほ")
-      engineer.valid?
-      expect(engineer.errors[:first_name]).to include("is too long (maximum is 20 characters)")
-    end
-
-    # first_nameが20文字以下であれば登録できること
-    it "nicknameが20文字以下であれば登録できること" do
-      engineer = build(:engineer, first_name: "ほげほげほげほげほげほげほげほげほげほげ")
-      engineer.valid?
-      expect(engineer).to be_valid
-    end
-
-    # first_nameがフォーマットに適していない場合登録できないことを確認
-    it "is invalid with a unsuitable format" do
-      engineer = build(:engineer, first_name: "ホゲホゲホゲホゲホゲホゲホゲホゲホゲホゲ")
-      engineer.valid?
-      expect(engineer.errors[:first_name]).to include("is invalid")
-    end
-
-    # last_nameが空白だと登録できないことを確認
-    it "is invalid without a last_name" do
-      engineer = build(:engineer, last_name: "")
-      engineer.valid?
-      expect(engineer.errors[:last_name]).to include("can't be blank")
-    end
-
-    # last_nameが21文字以上であれば登録できないこと
-    it "last_nameが20文字以上であれば登録できないこと" do
-      engineer = build(:engineer, last_name: "ふがふがふがふがふがふがふがふがふがふがふ")
-      engineer.valid?
-      expect(engineer.errors[:last_name]).to include("is too long (maximum is 20 characters)")
-    end
-
-    # last_nameが20文字以下であれば登録できること
-    it "last_nameが20文字以下であれば登録できること" do
-      engineer = build(:engineer, last_name: "ふがふがふがふがふがふがふがふがふがふが")
-      engineer.valid?
-      expect(engineer).to be_valid
-    end
-
-    # last_nameがフォーマットに適していない場合登録できないことを確認
-    it "is invalid with a unsuitable format" do
-      engineer = build(:engineer, last_name: "フガフガフガフガフガフガフガフガフガフガ")
-      engineer.valid?
-      expect(engineer.errors[:last_name]).to include("is invalid")
-    end
-
-    # first_name_kanaが空白だと登録できないことを確認
-    it "is invalid without a first_name_kana" do
-      engineer = build(:engineer, first_name_kana: "")
-      engineer.valid?
-      expect(engineer.errors[:first_name_kana]).to include("can't be blank")
-    end
-
-    # first_name_kanaが21文字以上であれば登録できないこと
-    it "first_name_kanaが20文字以上であれば登録できないこと" do
-      engineer = build(:engineer, first_name_kana: "ホゲホゲホゲホゲホゲホゲホゲホゲホゲホゲホ")
-      engineer.valid?
-      expect(engineer.errors[:first_name_kana]).to include("is too long (maximum is 20 characters)")
-    end
-
-    # first_name_kanaが20文字以下であれば登録できること
-    it "nicknameが20文字以下であれば登録できること" do
-      engineer = build(:engineer, first_name_kana: "ホゲホゲホゲホゲホゲホゲホゲホゲホゲホゲ")
-      engineer.valid?
-      expect(engineer).to be_valid
-    end
-
-    # first_name_kanaがフォーマットに適していない場合登録できないことを確認
-    it "is invalid with a unsuitable format" do
-      engineer = build(:engineer, first_name_kana: "ほげほげほげほげほげほげほげほげほげほげ")
-      engineer.valid?
-      expect(engineer.errors[:first_name_kana]).to include("is invalid")
-    end
-
-    # last_name_kanaが空白だと登録できないことを確認
-    it "is invalid without a last_name_kana" do
-      engineer = build(:engineer, last_name_kana: "")
-      engineer.valid?
-      expect(engineer.errors[:last_name_kana]).to include("can't be blank")
-    end
-
-    # last_name_kanaが21文字以上であれば登録できないこと
-    it "last_name_kanaが20文字以上であれば登録できないこと" do
-      engineer = build(:engineer, last_name_kana: "フガフガフガフガフガフガフガフガフガフガフ")
-      engineer.valid?
-      expect(engineer.errors[:last_name_kana]).to include("is too long (maximum is 20 characters)")
-    end
-
-    # last_name_kanaが20文字以下であれば登録できること
-    it "last_name_kanaが20文字以下であれば登録できること" do
-      engineer = build(:engineer, last_name_kana: "フガフガフガフガフガフガフガフガフガフガ")
-      engineer.valid?
-      expect(engineer).to be_valid
-    end
-
-    # last_name_kanaがフォーマットに適していない場合登録できないことを確認
-    it "is invalid with a unsuitable format" do
-      engineer = build(:engineer, last_name_kana: "ふがふがふがふがふがふがふがふがふがふが")
-      engineer.valid?
-      expect(engineer.errors[:last_name_kana]).to include("is invalid")
     end
     
     # emailが空白だと登録できないことを確認
@@ -167,11 +55,11 @@ describe Engineer do
       expect(engineer.errors[:email]).to include("is invalid")
     end
 
-    # phone_numberが空白だと登録できないことを確認
-    it "is invalid without a phone_number" do
-      engineer = build(:engineer, phone_number: "")
+    # phone_numberが空白でも登録できることを確認
+    it "phone_numberが空白でも登録できることを確認" do
+      engineer = build(:engineer, phone_number: nil)
       engineer.valid?
-      expect(engineer.errors[:phone_number]).to include("can't be blank")
+      expect(engineer).to be_valid
     end
 
     # phone_numberが10文字未満だと保存できないことを確認

@@ -8,33 +8,11 @@ class Engineer < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}\z/i.freeze
   VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/.freeze
-  VALID_NAME_REGEX = /\A[一-龥ぁ-ん]/.freeze
-  VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
   VALID_DATE_REGEX = /\A\d{4}-\d{2}-\d{2}\z/.freeze
 
-  validates :nickname,
+  validates :name,
             presence: true,
             length: { maximum: 20 }
-
-  validates :first_name,
-            presence: true,
-            length: { maximum: 20 },
-            format: { with: VALID_NAME_REGEX }
-
-  validates :last_name,
-            presence: true,
-            length: { maximum: 20 },
-            format: { with: VALID_NAME_REGEX }
-
-  validates :first_name_kana,
-            presence: true,
-            length: { maximum: 20 },
-            format: { with: VALID_NAME_KANA_REGEX }
-
-  validates :last_name_kana,
-            presence: true,
-            length: { maximum: 20 },
-            format: { with: VALID_NAME_KANA_REGEX }
 
   validates :sex,
             presence: true
@@ -58,7 +36,12 @@ class Engineer < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX }
 
   validates :phone_number,
-            presence: true,
             length: { minimum: 10, maximum: 11 },
-            format: { with: VALID_PHONE_NUMBER_REGEX }
+            format: { with: VALID_PHONE_NUMBER_REGEX },
+            unless: :phone_number_presence?
+
+  def phone_number_presence?
+    phone_number.nil?
+  end
+
 end
