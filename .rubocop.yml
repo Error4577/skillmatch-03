@@ -9,6 +9,7 @@ AllCops:
     - node_modules/**/*
     - db/migrate/*
     - vendor/**/*
+    - spec/**/*
   # Rails向けのRails copsを実行。"rubocop -R"と同じ
   Rails:
     enabled: true
@@ -27,4 +28,7 @@ Metrics/LineLength:
 
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false

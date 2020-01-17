@@ -5,7 +5,7 @@ entity "Engineers" as engineer {
   --
   e-mail [string]
   password [string]
-  phone_number [varchar]
+  phone_number [string]
   nickname [string]
   first_name [string]
   last_name [string]
