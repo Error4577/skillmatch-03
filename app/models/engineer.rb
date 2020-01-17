@@ -43,5 +43,4 @@ class Engineer < ApplicationRecord
   def phone_number_presence?
     phone_number.nil?
   end
-
 end
