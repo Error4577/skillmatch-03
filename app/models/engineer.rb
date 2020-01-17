@@ -5,12 +5,12 @@ class Engineer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum sex: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}\z/i
-  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
-  VALID_NAME_REGEX = /\A[一-龥ぁ-ん]/
-  VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
-  VALID_DATE_REGEX = /\A\d{4}-\d{2}-\d{2}\z/
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}\z/i.freeze
+  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/.freeze
+  VALID_NAME_REGEX = /\A[一-龥ぁ-ん]/.freeze
+  VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
+  VALID_DATE_REGEX = /\A\d{4}-\d{2}-\d{2}\z/.freeze
 
   validates :nickname,
             presence: true,
