@@ -49,7 +49,7 @@ describe Company do
     end
 
     # emailがフォーマットに適していない場合登録できないことを確認
-    it "it is invalid with a unsuitable format" do
+    it "is invalid with a unsuitable format" do
       company = build(:company, email: Faker::Alphanumeric.alphanumeric(number: 20))
       company.valid?
       expect(company.errors[:email]).to include("is invalid")
