@@ -49,4 +49,4 @@ AWSのリソースをTerraformで管理し、インフラのコード化を実�
 .tfstateファイルはS3のバケットに保管しております。
 
 ## ERD
-![erd](https://imgur.com/RWvGCP2.png)
+![erd](https://imgur.com/3iE94zm.png)
