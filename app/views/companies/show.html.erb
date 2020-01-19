@@ -1,0 +1,24 @@
+<div class="companyShowPage">
+  <div class="container">
+    <header class="header">
+      
+    </header>
+    <div class="companyInfo">
+      
+    </div>
+    <div class="companyInfo_name"><%= @company.name %></div>
+    <div class="companyInfo_about"><%= @company.about %></div>
+  </div>
+  <% if current_company.id == @company.id %>
+    <div class="companyAction">
+      <div class="companyAction_edit companyAction_common">
+        <%= link_to(content_tag(:i, "", class: "fas fa-edit fa-2x"), edit_company_registration_path) %>
+        <span>情報を編集</span>
+      </div>
+      <div class="companyAction_logout companyAction_common">
+        <%= link_to(content_tag(:i, "", class: "fas fa-cog fa-2x"), destroy_company_session_path, method: :delete) %>
+        <span>ログアウト</span>
+      </div>
+    </div>
+  <% end %>
+</div>

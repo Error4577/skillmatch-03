@@ -6,12 +6,8 @@ entity "Engineers" as engineer {
   e-mail [string]
   password [string]
   phone_number [string]
-  nickname [string]
-  first_name [string]
-  last_name [string]
-  first_name_kana [string]
-  last_name_kana [string]
-  date_of_birth [date]
+  name [string]
+  birthday [date]
   sex [integer]
 }
 

@@ -1,5 +1,7 @@
 {
   "name": "skillmatch-03",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "rails-ujs": "^5.2.4-1"
+  }
 }

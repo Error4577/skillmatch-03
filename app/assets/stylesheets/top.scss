@@ -16,8 +16,9 @@
     &_btn {
       display: block;
       max-width: 400px;
+      min-width: 300px;
       padding: 20px;
-      margin: 0 auto;
+      margin: 20px auto 0px auto;
       border-radius: 30px;
       background: #00ced1;
       color: #fff;
