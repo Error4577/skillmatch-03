@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :health_check, only: [:index]
   resources :experiment, only: [:index]
   resources :companies, only: [:show]
-  resources :engineers, only: [:index, :show]
+  resources :engineers, only: %i[index show]
 end
