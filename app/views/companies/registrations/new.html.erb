@@ -32,6 +32,10 @@
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力してください", autocomplete: "off" %>
       </div>
       <div class="form-group">
+        <%= f.label :phone_number, "電話番号" %>
+        <%= f.telephone_field :phone_number, class: "form-control", placeholder: "電話番号を入力してください(ハイフンは不要です)", autocomplete: "off" %>
+      </div>
+      <div class="form-group">
         <label>会社概要</label>
         <%= f.text_area :about, maxlength: 500, rows: 10, class: "form-control"%>
       </div>
