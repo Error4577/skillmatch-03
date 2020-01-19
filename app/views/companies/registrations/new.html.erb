@@ -3,9 +3,9 @@
     <div>法人アカウントを作成</div>
   </header>
   <div class="container">
-    <%= form_with url: company_session_path, class: "mt-5", method: :post, local: true do |f| %>
-      <% f.hidden_field :email, value: "company@test.com" %>
-      <% f.hidden_field :password, value: "1234abcd" %>
+    <%= form_with model: @company, scope: :company, url: company_session_path, class: "mt-5", method: :post, local: true do |f| %>
+      <%= f.hidden_field :email, value: "company@test.com" %>
+      <%= f.hidden_field :password, value: "1234abcd" %>
       <div class="text-center">
         <%= f.submit "かんたんログイン", class: "btn submitBtn" %>
       </div>

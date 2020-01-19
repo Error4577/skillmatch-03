@@ -4,11 +4,11 @@
   </header>
   <div class="container">
     <%# <h2 class="title">法人 ログイン</h2> %>
-    <%= form_with model: @company, scope: :company, url: company_session_path, class: "mt-5", local: true do |f| %>
+    <%= form_with model: @company, scope: :company, url: company_session_path, class: "mt-5", method: :post, local: true do |f| %>
       <%= f.hidden_field :email, value: "company@test.com" %>
       <%= f.hidden_field :password, value: "1234abcd" %>
       <div class="text-center">
-        <%= f.submit "かんたんログイン", class: "btn loginBtn" %>
+        <%= f.submit "かんたんログイン", class: "btn submitBtn" %>
       </div>
     <% end %>
     <%= form_with model: @company, scope: :company, url: company_session_path, class: "mt-5", local: true do |f| %>
