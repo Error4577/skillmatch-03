@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :todos
   resources :health_check, only: [:index]
   resources :experiment, only: [:index]
+  resources :companies, only: [:show]
+  resources :engineers, only: [:index, :show]
 end
