@@ -1,4 +1,4 @@
-<div class="companySignupPage">
+<div class="companyEditPage">
   <header class="header">
     <div>法人アカウントを編集</div>
   </header>
@@ -14,17 +14,6 @@
         <%= f.email_field :email, class: "form-control", placeholder: "メールアドレスを入力してください", autocomplete: "email" %>
       </div>
       <div class="form-group">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %>文字以上入力してください</em>
-        <% end %><br />
-        <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください", autocomplete: "off" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation, "確認用パスワード" %>
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力してください", autocomplete: "off" %>
-      </div>
-      <div class="form-group">
         <%= f.label :phone_number, "電話番号" %>
         <%= f.telephone_field :phone_number, class: "form-control", placeholder: "電話番号を入力してください(ハイフンは不要です)", autocomplete: "off" %>
       </div>
@@ -32,9 +21,12 @@
         <label>会社概要</label>
         <%= f.text_area :about, maxlength: 500, rows: 10, class: "form-control"%>
       </div>
+      <div class="form-group">
+        <%= f.label "更新するにはパスワードを入力してください" %>
+        <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+      </div>
       <div class="text-center">
-        <%= f.submit "登録する" , class: "btn submitBtn"%>
-        <%= render "engineers/shared/links" %>
+        <%= f.submit "更新する" , class: "btn submitBtn"%>
       </div>
     <% end %>
   </div>

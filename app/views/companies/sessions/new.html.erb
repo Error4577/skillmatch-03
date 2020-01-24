@@ -8,7 +8,7 @@
       <%= f.hidden_field :email, value: "company@test.com" %>
       <%= f.hidden_field :password, value: "1234abcd" %>
       <div class="text-center">
-        <%= f.submit "かんたんログイン", class: "btn submitBtn" %>
+        <%= f.submit "かんたんログイン", class: "btn loginBtn" %>
       </div>
     <% end %>
     <%= form_with model: @company, scope: :company, url: company_session_path, class: "mt-5", local: true do |f| %>
